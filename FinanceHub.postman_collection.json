@@ -1,0 +1,852 @@
+{
+  "info": {
+    "_postman_id": "966fd762-0039-40d0-82f6-879e91168540",
+    "name": "FinanceHub",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46069032",
+    "_collection_link": "https://go.postman.co/collection/46069032-966fd762-0039-40d0-82f6-879e91168540?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}api/users/login/",
+              "host": [
+                "{{localhost}}api"
+              ],
+              "path": [
+                "users",
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Token {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"client3\",\r\n  \"email\": \"stormclaw108@gmail.com\",\r\n  \"password\": \"test@1234\",\r\n  \"first_name\": \"Client\",\r\n  \"middle_name\": \"\",\r\n  \"last_name\": \"Three\",\r\n  \"phone_number\": \"9999999988\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}users/signup/",
+              "host": [
+                "{{localhost}}users"
+              ],
+              "path": [
+                "signup",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify-otp",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Token {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"client2\",\r\n  \"otp\": \"342769\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}api/users/verify-otp/",
+              "host": [
+                "{{localhost}}api"
+              ],
+              "path": [
+                "users",
+                "verify-otp",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-session",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"device_ip\": \"127.0.0.1\",\r\n  \"device_info\": \"Windows 11\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}users/create-session/",
+              "host": [
+                "{{localhost}}users"
+              ],
+              "path": [
+                "create-session",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate-session",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"session_id\": \"59bac320-1812-466f-a37f-21b8f30312d6\",\r\n  \"device_token\": \"ae0c4d28df306627c7626d276b00fe8a\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}users/validate-session/",
+              "host": [
+                "{{localhost}}users"
+              ],
+              "path": [
+                "validate-session",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"session_id\": \"59bac320-1812-466f-a37f-21b8f30312d6\",\r\n  \"device_token\": \"ae0c4d28df306627c7626d276b00fe8a\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}api/users/logout/",
+              "host": [
+                "{{localhost}}api"
+              ],
+              "path": [
+                "users",
+                "logout",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-user",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "//Admin create analyst/user\r\n{\r\n  \"session_id\": \"52f7aa02-e6e0-4e42-b053-d3a3421ff910\",\r\n  \"device_token\": \"5b7ae875b731c23639596842386aefbc\",\r\n  \"username\": \"analyst1\",\r\n  \"email\": \"bikashsahoo10896@gmail.com\",\r\n  \"password\": \"test@1234\",\r\n  \"first_name\": \"Analyst\",\r\n  \"middle_name\": \"\",\r\n  \"last_name\": \"One\",\r\n  \"phone_number\": \"9999999997\",\r\n  \"role_code\": \"ANALYST\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}users/create-user/",
+              "host": [
+                "{{localhost}}users"
+              ],
+              "path": [
+                "create-user",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"session_id\": \"52f7aa02-e6e0-4e42-b053-d3a3421ff910\",\r\n  \"device_token\": \"5b7ae875b731c23639596842386aefbc\",\r\n  \"page\": 1,\r\n  \"page_size\": 10\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}users/get-users/",
+              "host": [
+                "{{localhost}}users"
+              ],
+              "path": [
+                "get-users",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Create-transaction-category",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"name\": \"Investment\",\r\n    \"description\": \"Investment revenue\",\r\n    \"transaction_type\": \"income\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/create-transaction-category/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "create-transaction-category",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update-transaction-category",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"category_id\": 1,\r\n    \"name\": \"Salary Updated\",\r\n    \"description\": \"Monthly salary\",\r\n    \"transaction_type\": \"income\",\r\n    \"is_active\": true\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/update-transaction-category/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "update-transaction-category",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-transaction-categories",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"transaction_type\": \"income\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/get-transaction-categories/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "get-transaction-categories",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-transaction-record",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"title\": \"Tour\",\r\n    \"amount\": 5000,\r\n    \"transaction_type\": \"expense\",\r\n    \"category_id\": 2,\r\n    \"transaction_date\": \"2026-03-05\",\r\n    \"description\": \"Office tour\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/create-transaction-record/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "create-transaction-record",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update-transaction-record",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"transaction_id\": \"d10ee552-7a10-437b-9273-b39e1e819341\",\r\n    \"title\": \"March Salary Updated\",\r\n    \"amount\": 60000,\r\n    \"description\": \"Salary revised\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/update-transaction-record/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "update-transaction-record",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-transaction-records",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/get-transaction-records/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "get-transaction-records",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-transaction-record-detail",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"transaction_id\": \"d10ee552-7a10-437b-9273-b39e1e819341\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/get-transaction-record-detail/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "get-transaction-record-detail",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete-transaction-record",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"transaction_id\": \"766d4247-348a-4747-a80b-dddc15d55c8e\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}transactions/delete-transaction-record/",
+              "host": [
+                "{{localhost}}transactions"
+              ],
+              "path": [
+                "delete-transaction-record",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Get-dashboard-summary",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"start_date\": \"2026-03-01\",\r\n    \"end_date\": \"2026-03-31\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}reports/get-dashboard-summary/",
+              "host": [
+                "{{localhost}}reports"
+              ],
+              "path": [
+                "get-dashboard-summary",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-category-wise-summary",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"start_date\": \"2026-03-01\",\r\n    \"end_date\": \"2026-03-31\",\r\n    \"transaction_type\": \"expense\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}reports/get-category-wise-summary/",
+              "host": [
+                "{{localhost}}reports"
+              ],
+              "path": [
+                "get-category-wise-summary",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-monthly-transaction-trend",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"year\": \"2026\"\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}reports/get-monthly-transaction-trend/",
+              "host": [
+                "{{localhost}}reports"
+              ],
+              "path": [
+                "get-monthly-transaction-trend",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-recent-transaction-activity",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"limit\": 5\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}reports/get-recent-transaction-activity/",
+              "host": [
+                "{{localhost}}reports"
+              ],
+              "path": [
+                "get-recent-transaction-activity",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-transaction-audit-logs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{AUTH_TOKEN}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"9db6c0c7-e689-4be5-b456-ddb9a2054eb5\",\r\n    \"device_token\": \"81bc1a058cc0f8e6318f306fac8b6f7c\",\r\n    \"transaction_id\": \"d10ee552-7a10-437b-9273-b39e1e819341\",\r\n    \"page\": 1,\r\n    \"page_size\": 10\r\n}"
+            },
+            "url": {
+              "raw": "{{localhost}}reports/get-transaction-audit-logs/",
+              "host": [
+                "{{localhost}}reports"
+              ],
+              "path": [
+                "get-transaction-audit-logs",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
