@@ -24,19 +24,3 @@ def convert_data(data):
     except Exception:
         post_data = None
     return post_data
-
-
-def generate_auth_token():
-    return secrets.token_hex(32)
-
-
-def generate_session_id():
-    return str(uuid.uuid4())
-
-
-def generate_device_token():
-    return secrets.token_hex(16)
-
-
-def get_expiry_time(hours=24):
-    return timezone.now() + timedelta(hours=hours)
