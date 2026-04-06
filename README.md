@@ -69,7 +69,7 @@ FinanceEHub/
 └── requirements.txt
 ```
 
-## Database Architecture
+## 4. Database Architecture
 
 The backend uses a relational database design in PostgreSQL and is organized into three main service areas:
 
@@ -203,7 +203,24 @@ erDiagram
     USER ||--o{ TRANSACTION_AUDIT_LOG : performs
 ```
 
-## 4. Architecture Pattern
+## 5. Authentication and Session Flow
+
+```mermaid
+flowchart TD
+
+    A[User Login] --> B[Validate Username & Password]
+    B --> C[Generate Auth Token]
+    C --> D[Create User Session]
+    D --> E[Return token + session_id + device_token]
+
+    F[User Calls Protected API] --> G[Validate Bearer Token]
+    G --> H[Validate session_id]
+    H --> I[Validate device_token]
+    I --> J[Check User Role Permission]
+    J --> K[Allow / Deny API Access]
+```
+
+## 6. Architecture Pattern
 
 <table>
   <tr>
@@ -230,7 +247,7 @@ erDiagram
 
 This structure keeps the code modular, readable, and easier to maintain.
 
-## 5. Core Features
+## 7. Core Features
 
 ### User and Access Management
 - Role-based access control using Admin, Analyst, and Client roles
@@ -268,7 +285,7 @@ This structure keeps the code modular, readable, and easier to maintain.
 - Invalid token and invalid session protection
 
 
-## 6. Database Design
+## 8. Database Design
 
 ### Users Module
 - `Role`
@@ -287,7 +304,7 @@ This structure keeps the code modular, readable, and easier to maintain.
 - No separate reporting tables are used for this assignment scope
 
 
-## 7. Setup Instructions
+## 9. Setup Instructions
 
 ### Clone the repository
 
@@ -348,7 +365,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## 8. Running Unit Tests
+## 10. Running Unit Tests
 
 ```bash
 pytest
@@ -362,7 +379,7 @@ Unit tests are written using:
 
 `factory_boy`
 
-## 9. Possible Improvements
+## 11. Possible Improvements
 
 - Export reports to Excel or PDF
   
@@ -382,7 +399,7 @@ Unit tests are written using:
   
 - Expand unit and integration test coverage
 
-## 10. Summary
+## 12. Summary
 
 FinanceHub is a modular backend project designed to demonstrate:
 
