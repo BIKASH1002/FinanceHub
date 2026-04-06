@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-FinanceHub is a Django-based backend system built for a finance dashboard use case where different users interact with financial records based on their role and access level.
+FinanceHub is a Django-based backend system built for a finance data processing and access control use case where different users interact with financial records based on their role and access level.
 
 The project focuses on core backend responsibilities such as:
 - user and role management
