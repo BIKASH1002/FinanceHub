@@ -53,7 +53,7 @@ This project was developed as part of a backend assignment centered on API desig
 ## 3. Project Structure
 
 ```bash
-FINANCEHUB/
+FinanceEHub/
 │
 ├── config/                  # Django project configuration
 ├── services/
@@ -67,6 +67,140 @@ FINANCEHUB/
 ├── .gitignore
 ├── manage.py
 └── requirements.txt
+```
+
+## Database Architecture
+
+The backend uses a relational database design in PostgreSQL and is organized into three main service areas:
+
+- **Users** → role management, authentication, OTP, and sessions
+- **Transactions** → transaction categories, transaction records, and audit logs
+- **Reporting** → generated dynamically from transaction data (no separate reporting tables)
+
+### Entity Relationship Diagram
+
+```mermaid
+erDiagram
+
+    USER {
+        int id PK
+        string username
+        string email
+        string password
+        boolean is_active
+    }
+
+    ROLE {
+        int id PK
+        string name
+        string description
+        string role_code UK
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+
+    USER_PROFILE {
+        int id PK
+        int user_id FK
+        int role_id FK
+        string first_name
+        string middle_name
+        string last_name
+        string phone_number
+        boolean email_verified
+        boolean phone_verified
+        string signup_type
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+
+    EMAIL_OTP {
+        int id PK
+        int user_id FK
+        string email
+        string otp
+        boolean is_verified
+        datetime expires_at
+        datetime created_at
+        datetime updated_at
+    }
+
+    USER_AUTH_TOKEN {
+        int id PK
+        int user_id FK
+        string token UK
+        boolean is_active
+        datetime expires_at
+        datetime created_at
+        datetime updated_at
+    }
+
+    USER_SESSION {
+        int id PK
+        int user_id FK
+        int auth_token_id FK
+        string session_id UK
+        string device_token UK
+        string device_ip
+        string device_info
+        boolean logged_in
+        datetime logged_in_at
+        datetime expiry_at
+        datetime refresh_at
+        datetime logout_at
+        datetime created_at
+        datetime updated_at
+    }
+
+    TRANSACTION_CATEGORY {
+        int id PK
+        string name
+        string description
+        string transaction_type
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+
+    TRANSACTION {
+        int id PK
+        string transaction_id UK
+        string title
+        decimal amount
+        string transaction_type
+        int category_id FK
+        date transaction_date
+        string description
+        boolean is_active
+        int created_by FK
+        int updated_by FK
+        datetime created_at
+        datetime updated_at
+    }
+
+    TRANSACTION_AUDIT_LOG {
+        int id PK
+        int transaction_id FK
+        string action
+        int action_by FK
+        string remarks
+        datetime created_at
+    }
+
+    USER ||--|| USER_PROFILE : has
+    ROLE ||--o{ USER_PROFILE : assigned_to
+    USER ||--o{ EMAIL_OTP : receives
+    USER ||--o{ USER_AUTH_TOKEN : owns
+    USER ||--o{ USER_SESSION : creates
+    USER_AUTH_TOKEN ||--o{ USER_SESSION : linked_to
+
+    TRANSACTION_CATEGORY ||--o{ TRANSACTION : classifies
+    USER ||--o{ TRANSACTION : creates
+    USER ||--o{ TRANSACTION : updates
+    TRANSACTION ||--o{ TRANSACTION_AUDIT_LOG : tracked_by
+    USER ||--o{ TRANSACTION_AUDIT_LOG : performs
 ```
 
 ## 4. Architecture Pattern
